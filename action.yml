@@ -1,0 +1,49 @@
+name: 'AWS Glue Crawler'
+description: 'Run AWS Glue crawlers to discover and catalog data in S3'
+author: 'predictr-io'
+
+branding:
+  icon: 'search'
+  color: 'purple'
+
+inputs:
+  # Crawler configuration
+  crawler-name:
+    description: 'Name of the AWS Glue crawler to run'
+    required: true
+
+  # Wait configuration
+  wait-for-completion:
+    description: 'Wait for the crawler to complete before finishing the action (default: true)'
+    required: false
+    default: 'true'
+
+  timeout-minutes:
+    description: 'Maximum time to wait for crawler completion in minutes (default: 60)'
+    required: false
+    default: '60'
+
+  # Optional parameters
+  catalog-id:
+    description: 'AWS account ID for cross-account catalog access (defaults to current account)'
+    required: false
+
+outputs:
+  success:
+    description: 'Whether the crawler operation succeeded (true/false)'
+
+  state:
+    description: 'Final state of the crawler (READY, RUNNING, STOPPING, etc.)'
+
+  tables-created:
+    description: 'Number of tables created by the crawler run'
+
+  tables-updated:
+    description: 'Number of tables updated by the crawler run'
+
+  tables-deleted:
+    description: 'Number of tables deleted by the crawler run'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
