@@ -56959,8 +56959,6 @@ async function run() {
         await glue.send(new client_glue_1.StartCrawlerCommand({
             Name: crawlerName,
         }));
-        // Set initial outputs
-        core.setOutput('success', 'true');
         if (waitForCompletion) {
             core.info('Waiting for crawler to complete...');
             const startTime = Date.now();
@@ -57012,7 +57010,6 @@ async function run() {
         else {
             core.setFailed('Unknown error occurred');
         }
-        core.setOutput('success', 'false');
     }
 }
 run();

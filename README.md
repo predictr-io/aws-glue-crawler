@@ -31,7 +31,7 @@ Run a crawler and wait for it to complete:
 ```yaml
 - name: Run Glue crawler
   id: crawler
-  uses: predictr-io/aws-glue-crawler@v1
+  uses: predictr-io/aws-glue-crawler@v0
   with:
     crawler-name: 'my-data-crawler'
     wait-for-completion: 'true'
@@ -50,7 +50,7 @@ Start a crawler and continue immediately:
 
 ```yaml
 - name: Start Glue crawler
-  uses: predictr-io/aws-glue-crawler@v1
+  uses: predictr-io/aws-glue-crawler@v0
   with:
     crawler-name: 'my-data-crawler'
     wait-for-completion: 'false'
@@ -119,11 +119,12 @@ jobs:
 
 | Output | Description |
 |--------|-------------|
-| `success` | Whether the crawler operation succeeded (`true`/`false`) |
 | `state` | Final state of the crawler (e.g., `READY`, `RUNNING`, `STOPPING`) |
 | `tables-created` | Number of tables created by the crawler run |
 | `tables-updated` | Number of tables updated by the crawler run |
 | `tables-deleted` | Number of tables deleted by the crawler run |
+
+**Note**: The action fails the step if the crawler cannot be started or encounters an error. Check the step status instead of using a success output.
 
 ## Cross-Account Access
 
@@ -131,7 +132,7 @@ Run crawlers in different AWS accounts:
 
 ```yaml
 - name: Run cross-account crawler
-  uses: predictr-io/aws-glue-crawler@v1
+  uses: predictr-io/aws-glue-crawler@v0
   with:
     crawler-name: 'shared-data-crawler'
     catalog-id: '987654321098'

@@ -21,9 +21,6 @@ async function run(): Promise<void> {
       })
     );
 
-    // Set initial outputs
-    core.setOutput('success', 'true');
-
     if (waitForCompletion) {
       core.info('Waiting for crawler to complete...');
       const startTime = Date.now();
@@ -83,7 +80,6 @@ async function run(): Promise<void> {
     } else {
       core.setFailed('Unknown error occurred');
     }
-    core.setOutput('success', 'false');
   }
 }
 

@@ -29,9 +29,6 @@ inputs:
     required: false
 
 outputs:
-  success:
-    description: 'Whether the crawler operation succeeded (true/false)'
-
   state:
     description: 'Final state of the crawler (READY, RUNNING, STOPPING, etc.)'
 

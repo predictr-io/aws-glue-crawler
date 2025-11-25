@@ -1,6 +1,6 @@
 {
   "name": "aws-glue-crawler",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "GitHub Action to run AWS Glue crawlers",
   "main": "dist/index.js",
   "scripts": {
